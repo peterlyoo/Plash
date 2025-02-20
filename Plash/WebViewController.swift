@@ -16,6 +16,7 @@ final class WebViewController: NSViewController {
 
 	private func createWebView() -> SSWebView {
 		let configuration = WKWebViewConfiguration()
+		let chromeUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 		configuration.allowsAirPlayForMediaPlayback = false
 		configuration.applicationNameForUserAgent = "\(SSApp.name)/\(SSApp.version)"
 
@@ -40,7 +41,7 @@ final class WebViewController: NSViewController {
 		webView.uiDelegate = self
 		webView.allowsBackForwardNavigationGestures = true
 		webView.allowsMagnification = true
-		webView.customUserAgent = SSWebView.safariUserAgent
+		webView.customUserAgent = chromeUserAgent
 		webView.drawsBackground = false
 
 		userContentController.addJavaScript("document.documentElement.classList.add('is-plash-app')")
